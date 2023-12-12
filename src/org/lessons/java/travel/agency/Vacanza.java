@@ -60,20 +60,20 @@ public class Vacanza {
 
 
     private void validateEndDate(LocalDate endDate) {
-        if (endDate == null || endDate.isBefore(startDate)){
+        if (endDate == null || (this.startDate != null && endDate.isBefore(this.startDate))){
             throw new IllegalArgumentException("data di arrivo non valida!");
         }
     }
 
     public long totalDays(){
-        long daysBetween =  DAYS.between(startDate, endDate);
-        return  daysBetween;
+        return DAYS.between(startDate, endDate);
+
 
     }
 
     @Override
     public String toString() {
-        return "Hai prenotato una vacanza di " + totalDays()+ "giorni a " + destination +  "dal " + startDate + "al" + endDate;
+        return "Hai prenotato una vacanza di " + totalDays()+ " giorni a " + destination +  " dal " + startDate + " al " + endDate;
     }
 }
 

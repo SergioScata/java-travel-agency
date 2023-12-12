@@ -18,5 +18,10 @@ public class ViaggioNozze extends Vacanza{
         super(destination, startDate, endDate);
         this.chosenTreatment = chosenTreatment;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Trattamento scelto: " + chosenTreatment;
+    }
 }
 

@@ -27,4 +27,9 @@ public class ViaggioGruppo extends Vacanza{
         this.numberOfPartecipants = numberOfPartecipants;
         this.ageRange = ageRange;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " numero di partecipanti: " + numberOfPartecipants + " range d'età" + ageRange;
+    }
 }

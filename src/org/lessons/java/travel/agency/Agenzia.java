@@ -14,56 +14,56 @@ public class Agenzia {
                 String travelChoice = scan.nextLine();
 
                 if (travelChoice.equals("1") || travelChoice.equalsIgnoreCase("generica")){
-
-                System.out.println("Dove vuoi andare?");
-                String destination = scan.nextLine();
-
-                System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
-                String firstDate = scan.nextLine();
-
-                LocalDate startDate = LocalDate.parse(firstDate);
-                System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
-                String secondDate = scan.nextLine();
-                LocalDate endDate = LocalDate.parse(secondDate);
-
-                Vacanza vacanza = new Vacanza(destination,startDate,endDate);
-                System.out.println(vacanza);
+                   try{
+                        System.out.println("Dove vuoi andare?");
+                        String destination = scan.nextLine();
+                        System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
+                        String firstDate = scan.nextLine();
+                        LocalDate startDate = LocalDate.parse(firstDate);
+                        System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
+                        String secondDate = scan.nextLine();
+                        LocalDate endDate = LocalDate.parse(secondDate);
+                        Vacanza vacanza = new Vacanza(destination,startDate,endDate);
+                        System.out.println(vacanza);
+                   }catch (IllegalArgumentException e){
+                       System.out.println("destinazione o date non corrette");
+                   }
                 } else if (travelChoice.equals("2") || travelChoice.equalsIgnoreCase("nozze") ) {
-                    System.out.println("Dove vuoi andare?");
-                    String destination = scan.nextLine();
-
-                    System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
-                    String firstDate = scan.nextLine();
-
-                    LocalDate startDate = LocalDate.parse(firstDate);
-                    System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
-                    String secondDate = scan.nextLine();
-                    LocalDate endDate = LocalDate.parse(secondDate);
-
-                    System.out.println("Indica il trattamento che desideri ricervere durante il viaggio: ");
-                    String treatment = scan.nextLine();
-
-                    ViaggioNozze viaggioNozze = new ViaggioNozze(destination,startDate,endDate,treatment);
-                    System.out.println(viaggioNozze);
+                    try{
+                        System.out.println("Dove vuoi andare?");
+                        String destination = scan.nextLine();
+                        System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
+                        String firstDate = scan.nextLine();
+                        LocalDate startDate = LocalDate.parse(firstDate);
+                        System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
+                        String secondDate = scan.nextLine();
+                        LocalDate endDate = LocalDate.parse(secondDate);
+                        System.out.println("Indica il trattamento che desideri ricervere durante il viaggio: ");
+                        String treatment = scan.nextLine();
+                        ViaggioNozze viaggioNozze = new ViaggioNozze(destination,startDate,endDate,treatment);
+                        System.out.println(viaggioNozze);
+                    }catch (IllegalArgumentException e){
+                        System.out.println("destinazione, date o trattemento non corretti");
+                    }
                 } else if (travelChoice.equals("3") || travelChoice.equalsIgnoreCase("gruppo")) {
+                    try{
                     System.out.println("Dove vuoi andare?");
                     String destination = scan.nextLine();
-
                     System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
                     String firstDate = scan.nextLine();
-
                     LocalDate startDate = LocalDate.parse(firstDate);
                     System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
                     String secondDate = scan.nextLine();
                     LocalDate endDate = LocalDate.parse(secondDate);
-
                     System.out.println("Indica il numero di persone: ");
                     int numberOfPartecipants = Integer.parseInt(scan.nextLine());
                     System.out.println("Indica il range d'eta");
                     int rangeAge = Integer.parseInt(scan.nextLine());
-
                     ViaggioGruppo viaggioGruppo = new ViaggioGruppo(destination,startDate,endDate,numberOfPartecipants,rangeAge);
                     System.out.println(viaggioGruppo);
+                    }catch (IllegalArgumentException e){
+                        System.out.println("destinazione,date, numero di partecipanti o range d'età non corretti");
+                    }
                 }
 
                 break;
