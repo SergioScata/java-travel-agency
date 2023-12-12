@@ -3,6 +3,7 @@ package org.lessons.java.travel.agency;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -90,7 +91,7 @@ public class Vacanza {
     public BigDecimal totalEscursionPrice(){
         BigDecimal initialPrice = BigDecimal.ZERO;
         for (Escursione element:listEscursioni){
-            initialPrice.add(element.getPrice());
+            initialPrice = initialPrice.add(element.getPrice()).setScale(2, RoundingMode.HALF_DOWN);
         }
         return initialPrice;
     }

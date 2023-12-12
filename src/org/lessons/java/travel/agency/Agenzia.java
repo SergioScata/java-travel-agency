@@ -29,7 +29,8 @@ public class Agenzia {
                         LocalDate endDate = LocalDate.parse(secondDate);
                         Vacanza vacanza = new Vacanza(destination,startDate,endDate);
                         vacanza.setListEscursioni(escursione1);
-                       System.out.println(vacanza.getListEscursioni());
+                        vacanza.setListEscursioni(escursione2);
+                        vacanza.setListEscursioni(escursione3);
                        System.out.println("Il prezzo delle escursioni è: " + vacanza.totalEscursionPrice());
                         System.out.println(vacanza);
                    }catch (IllegalArgumentException e){
@@ -48,6 +49,10 @@ public class Agenzia {
                         System.out.println("Indica il trattamento che desideri ricervere durante il viaggio: ");
                         String treatment = scan.nextLine();
                         ViaggioNozze viaggioNozze = new ViaggioNozze(destination,startDate,endDate,treatment);
+                        viaggioNozze.setListEscursioni(escursione1);
+                        viaggioNozze.setListEscursioni(escursione2);
+                        viaggioNozze.setListEscursioni(escursione3);
+                        System.out.println("Il prezzo delle escursioni è: " + viaggioNozze.totalEscursionPrice());
                         System.out.println(viaggioNozze);
                     }catch (IllegalArgumentException e){
                         System.out.println("destinazione, date o trattemento non corretti");
@@ -67,6 +72,10 @@ public class Agenzia {
                     System.out.println("Indica il range d'eta");
                     int rangeAge = Integer.parseInt(scan.nextLine());
                     ViaggioGruppo viaggioGruppo = new ViaggioGruppo(destination,startDate,endDate,numberOfPartecipants,rangeAge);
+                        viaggioGruppo.setListEscursioni(escursione1);
+                        viaggioGruppo.setListEscursioni(escursione2);
+                        viaggioGruppo.setListEscursioni(escursione3);
+                        System.out.println("Il prezzo delle escursioni è: " + viaggioGruppo.totalEscursionPrice());
                     System.out.println(viaggioGruppo);
                     }catch (IllegalArgumentException e){
                         System.out.println("destinazione,date, numero di partecipanti o range d'età non corretti");
