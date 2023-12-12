@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Agenzia {
+    public static String chiedi(){
+        return "sergio";
+    }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Escursione escursione1 = new Escursione("Stadio", 3, new BigDecimal(68.99));
@@ -17,20 +20,21 @@ public class Agenzia {
                 System.out.println("Che tipo di vacanza vuoi fare: 1.Generica 2.Nozze 3.Gruppo");
                 String travelChoice = scan.nextLine();
 
+                System.out.println("Dove vuoi andare?");
+                String destination = scan.nextLine();
+                System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
+                String firstDate = scan.nextLine();
+                LocalDate startDate = LocalDate.parse(firstDate);
+                System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
+                String secondDate = scan.nextLine();
+                LocalDate endDate = LocalDate.parse(secondDate);
+
                 if (travelChoice.equals("1") || travelChoice.equalsIgnoreCase("generica")){
                    try{
-                        System.out.println("Dove vuoi andare?");
-                        String destination = scan.nextLine();
-                        System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
-                        String firstDate = scan.nextLine();
-                        LocalDate startDate = LocalDate.parse(firstDate);
-                        System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
-                        String secondDate = scan.nextLine();
-                        LocalDate endDate = LocalDate.parse(secondDate);
                         Vacanza vacanza = new Vacanza(destination,startDate,endDate);
-                        vacanza.setListEscursioni(escursione1);
-                        vacanza.setListEscursioni(escursione2);
-                        vacanza.setListEscursioni(escursione3);
+                        vacanza.addEscursioni(escursione1);
+                        vacanza.addEscursioni(escursione2);
+                        vacanza.addEscursioni(escursione3);
                        System.out.println("Il prezzo delle escursioni è: " + vacanza.totalEscursionPrice());
                         System.out.println(vacanza);
                    }catch (IllegalArgumentException e){
@@ -38,20 +42,12 @@ public class Agenzia {
                    }
                 } else if (travelChoice.equals("2") || travelChoice.equalsIgnoreCase("nozze") ) {
                     try{
-                        System.out.println("Dove vuoi andare?");
-                        String destination = scan.nextLine();
-                        System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
-                        String firstDate = scan.nextLine();
-                        LocalDate startDate = LocalDate.parse(firstDate);
-                        System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
-                        String secondDate = scan.nextLine();
-                        LocalDate endDate = LocalDate.parse(secondDate);
                         System.out.println("Indica il trattamento che desideri ricervere durante il viaggio: ");
                         String treatment = scan.nextLine();
                         ViaggioNozze viaggioNozze = new ViaggioNozze(destination,startDate,endDate,treatment);
-                        viaggioNozze.setListEscursioni(escursione1);
-                        viaggioNozze.setListEscursioni(escursione2);
-                        viaggioNozze.setListEscursioni(escursione3);
+                        viaggioNozze.addEscursioni(escursione1);
+                        viaggioNozze.addEscursioni(escursione2);
+                        viaggioNozze.addEscursioni(escursione3);
                         System.out.println("Il prezzo delle escursioni è: " + viaggioNozze.totalEscursionPrice());
                         System.out.println(viaggioNozze);
                     }catch (IllegalArgumentException e){
@@ -59,28 +55,19 @@ public class Agenzia {
                     }
                 } else if (travelChoice.equals("3") || travelChoice.equalsIgnoreCase("gruppo")) {
                     try{
-                    System.out.println("Dove vuoi andare?");
-                    String destination = scan.nextLine();
-                    System.out.println("Quando vuoi partire? (yyyy-mm-dd)");
-                    String firstDate = scan.nextLine();
-                    LocalDate startDate = LocalDate.parse(firstDate);
-                    System.out.println("Quando vuoi tornare? (yyyy-mm-dd)");
-                    String secondDate = scan.nextLine();
-                    LocalDate endDate = LocalDate.parse(secondDate);
                     System.out.println("Indica il numero di persone: ");
                     int numberOfPartecipants = Integer.parseInt(scan.nextLine());
                     System.out.println("Indica il range d'eta");
                     int rangeAge = Integer.parseInt(scan.nextLine());
                     ViaggioGruppo viaggioGruppo = new ViaggioGruppo(destination,startDate,endDate,numberOfPartecipants,rangeAge);
-                        viaggioGruppo.setListEscursioni(escursione1);
-                        viaggioGruppo.setListEscursioni(escursione2);
-                        viaggioGruppo.setListEscursioni(escursione3);
+                        viaggioGruppo.addEscursioni(escursione1);
+                        viaggioGruppo.addEscursioni(escursione2);
+                        viaggioGruppo.addEscursioni(escursione3);
                         System.out.println("Il prezzo delle escursioni è: " + viaggioGruppo.totalEscursionPrice());
                     System.out.println(viaggioGruppo);
                     }catch (IllegalArgumentException e){
                         System.out.println("destinazione,date, numero di partecipanti o range d'età non corretti");
                     }
-
                 }
 
                 break;

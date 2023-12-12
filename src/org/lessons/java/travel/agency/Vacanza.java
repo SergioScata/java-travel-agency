@@ -17,7 +17,7 @@ public class Vacanza {
         return listEscursioni;
     }
 
-    public void setListEscursioni(Escursione escursione) {
+    public void addEscursioni(Escursione escursione) {
         listEscursioni.add(escursione);
     }
 
@@ -26,6 +26,7 @@ public class Vacanza {
     }
 
     public void setDestination(String destination) {
+        validateDestination(destination);
         this.destination = destination;
     }
 
@@ -34,6 +35,7 @@ public class Vacanza {
     }
 
     public void setStartDate(LocalDate startDate) {
+        validateStartDate(startDate);
         this.startDate = startDate;
     }
 
@@ -42,17 +44,18 @@ public class Vacanza {
     }
 
     public void setEndDate(LocalDate endDate) {
+        validateEndDate(endDate);
         this.endDate = endDate;
     }
 
 
     public Vacanza(String destination, LocalDate startDate, LocalDate endDate)throws IllegalArgumentException {
-        validateDestination(destination);
-        validateStartDate(startDate);
-        validateEndDate(endDate);
         this.destination = destination;
         this.startDate = startDate;
         this.endDate = endDate;
+        validateDestination(destination);
+        validateStartDate(startDate);
+        validateEndDate(endDate);
     }
 
 
@@ -79,8 +82,6 @@ public class Vacanza {
 
     public long totalDays(){
         return DAYS.between(startDate, endDate);
-
-
     }
 
     @Override

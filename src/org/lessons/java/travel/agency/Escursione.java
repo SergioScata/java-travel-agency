@@ -7,6 +7,11 @@ public class Escursione {
     private int duration;
     private BigDecimal price;
 
+    public Escursione(String city, int duration, BigDecimal price) {
+        this.city = city;
+        this.duration = duration;
+        this.price = price;
+    }
     public String getCity() {
         return city;
     }
@@ -31,9 +36,4 @@ public class Escursione {
         this.price = price;
     }
 
-    public Escursione(String city, int duration, BigDecimal price) {
-        this.city = city;
-        this.duration = duration;
-        this.price = price;
-    }
 }
