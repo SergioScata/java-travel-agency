@@ -2,12 +2,23 @@ package org.lessons.java.travel.agency;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Vacanza {
     private String destination;
     private LocalDate startDate;
     private LocalDate endDate;
+    private ArrayList<Escursione> listEscursioni = new ArrayList<>();
+
+    public ArrayList<Escursione> getListEscursioni() {
+        return listEscursioni;
+    }
+
+    public void setListEscursioni(Escursione escursione) {
+        listEscursioni.add(escursione);
+    }
 
     public String getDestination() {
         return destination;
@@ -75,5 +86,14 @@ public class Vacanza {
     public String toString() {
         return "Hai prenotato una vacanza di " + totalDays()+ " giorni a " + destination +  " dal " + startDate + " al " + endDate;
     }
+
+    public BigDecimal totalEscursionPrice(){
+        BigDecimal initialPrice = BigDecimal.ZERO;
+        for (Escursione element:listEscursioni){
+            initialPrice.add(element.getPrice());
+        }
+        return initialPrice;
+    }
+
 }
 
